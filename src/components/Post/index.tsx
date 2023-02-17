@@ -1,8 +1,10 @@
 import Avatar from "../Avatar";
 import Comment from "../Comment";
 import styles from "./post.module.css";
+/* 
 import { formatDistanceToNow } from "date-fns";
-import ptBR from "date-fns/locale/pt-BR";
+import ptBR from "date-fns/locale/pt-BR"; 
+*/
 import { ChangeEvent, FormEvent, InvalidEvent, useState } from "react";
 
 interface Author{
@@ -12,7 +14,7 @@ interface Author{
 }
 
 interface Content{
-  type: "paragraph" | "link";
+  type: string;
   content: string;
 }
 
@@ -32,10 +34,10 @@ const Post = ({ author, publishedAt, content} : PostProps) => {
     minute: "2-digit",
   }).format(publishedAt);
 
-  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+/*   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
     locale: ptBR,
     addSuffix: true,
-  });
+  }); */
 
   const [comments, setComments] = useState([
     "Post muito bom, hein ?!"
@@ -82,7 +84,7 @@ const Post = ({ author, publishedAt, content} : PostProps) => {
         </div>
 
         <time title={publishedDateFormatted} dateTime="">
-          {publishedDateRelativeToNow}
+          {publishedDateFormatted}
         </time>
       </header>
 
